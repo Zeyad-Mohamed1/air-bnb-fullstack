@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 
-const Avatar = () => {
+const Avatar = ({ src }: { src?: string | null }) => {
   return (
     <Image
-      src="/images/placeholder.jpg"
+      src={src || "/images/placeholder.jpg"}
       alt="Avatar"
       width={30}
       height={30}
