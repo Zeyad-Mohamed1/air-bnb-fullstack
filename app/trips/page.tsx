@@ -29,9 +29,9 @@ const TripsPage = async () => {
     );
   }
   return (
-    <ClientOnly>
+    <div>
       <TripsClient reservations={reservations} currentUser={currentUser} />
-    </ClientOnly>
+    </div>
   );
 };
 

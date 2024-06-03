@@ -18,6 +18,7 @@ import { IoDiamond } from "react-icons/io5";
 import { MdOutlineVilla } from "react-icons/md";
 import CategoryBox from "../CategoryBox";
 import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export const categories = [
   {
@@ -111,12 +112,13 @@ const Categories = () => {
     <Container>
       <div className="pt-4 flex flow-row items-center justify-between overflow-x-auto">
         {categories.map((item) => (
-          <CategoryBox
-            key={item.label}
-            label={item.label}
-            icon={item.icon}
-            selected={category === item.label}
-          />
+          <Suspense key={item.label} fallback={<div>Loading...</div>}>
+            <CategoryBox
+              label={item.label}
+              icon={item.icon}
+              selected={category === item.label}
+            />
+          </Suspense>
         ))}
       </div>
     </Container>

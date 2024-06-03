@@ -9,6 +9,7 @@ import getCurrentUser from "@/actions/getCurrentUser";
 import { log } from "console";
 import RentModal from "@/components/modals/RentModal";
 import SearchModal from "@/components/modals/SearchModal";
+import { Suspense } from "react";
 
 const inter = Nunito({ subsets: ["latin"] });
 
@@ -30,7 +31,9 @@ export default async function RootLayout({
         <RegisterModal />
         <LoginModal />
         <RentModal />
-        <SearchModal />
+        <Suspense fallback={<div>Loading...</div>}>
+          <SearchModal />
+        </Suspense>
         <Navbar currentUser={currentUser} />
         <div className="pb-20 pt-28">{children}</div>
       </body>
